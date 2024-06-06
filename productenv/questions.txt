@@ -1,0 +1,1 @@
+・views.pyで商品削除時のメッセージ表示をdeleteメソッドを使用してできない(前なら絵でform_valid,form_invalidを使ったらできた。)

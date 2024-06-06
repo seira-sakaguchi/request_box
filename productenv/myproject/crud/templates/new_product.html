@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}商品登録{% endblock %}
+
+{% block content %}
+    <h1 class="text-center my-div-style fw-bold">商品登録</h1>
+    <div class="container d-flex justify-content-center align-items-center" style="width: 3000px;">
+        <div class="row">
+            <div class="col-md-12">
+                <form method="post" enctype='multipart/form-data'>
+                    {% csrf_token %}
+                    <table class="table">
+                        {{form.as_table}}
+                    </table>
+                    <!-- ここのレイアウト気に入らないから後で修正 -->
+                     <a href="{% url 'crud:list' %}">戻る</a> 
+                    <div class="text-center  ml-3 d-inline-block">
+                        <button class="btn btn-warning shadow" type="submit">更新</button> <!--CreateView使ってるからそのままリストに反映される！-->
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

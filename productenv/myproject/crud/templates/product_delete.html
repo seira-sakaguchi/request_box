@@ -1,0 +1,18 @@
+{% extends 'base.html'%}
+{% load static %}
+
+{% block title %}削除{% endblock %}
+
+{% block content %}
+    <div class="container my-div-style text-center ">
+        <div class="row">
+            <form method="post">
+                {% csrf_token %}
+                <p class="fs-2">本当に削除しますか？</p>
+                <a class="btn btn-secondary mt-5" href="{% url 'crud:list'%}">キャンセル</a>
+                <button class="btn btn-warning mt-5 ml-2" type="submit">削除</button>
+            </form>
+        </div>
+
+    </div>
+{% endblock %}
