@@ -36,7 +36,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    # 'django.contrib.admin',
+    'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -78,6 +78,8 @@ ACCOUNT_LOGOUT_ON_GET = True
 ACCOUNT_EMAIL_SUBJECT_PREFIX = ''
 
 DEFAULT_FROM_EMAIL = os.environ.get('FROM_EMAIL')
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 
 

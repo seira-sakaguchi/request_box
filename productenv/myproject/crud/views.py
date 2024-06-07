@@ -4,6 +4,7 @@ from .models import Product
 from django.urls import reverse_lazy
 from django.contrib import messages
 from .forms import ProductCreateForm
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 class ProductListView(generic.ListView):
     model = Product
@@ -47,6 +48,11 @@ class ProductUpdateView(generic.UpdateView):
     success_url = reverse_lazy('crud:list')
    
     def form_valid(self,form):
+
+        #self.kwargs['pk'] はurls.pyで設定したpathの主キーから渡されている情報。こういう書き方と思った方が良い。
+        pk = self.kwargs['pk'] 
+        print('pk',pk)
+
         messages.success(self.request,'商品情報を更新しました。')
         return super().form_valid(form)
     

@@ -24,15 +24,19 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
+                      {% if user.is_authenticated %}
                         <li class="nav-item">
-                            <a class="nav-link" href="#">新規登録</a>
+                          <a class="nav-link {% block active_logout %}{% endblock %}" href="{% url 'account_logout'%}">ログアウト</a> <!--ログアウト画面遷移後、ACCOUNT_LOGOUT_REDIRECT_URL = 'account_login'に遷移する -->
+                        </li>
+
+                      {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link {% block active_signup %}{% endblock %}" href="{% url 'account_signup'%}">サインアップ</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">データ一覧</a>
+                            <a class="nav-link {% block active_login %}{% endblock %}" href="{% url 'account_login'%}">ログイン</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">エクスポート</a>
-                        </li>
+                      {% endif %}
                     </ul>
                 </div>
             </div>
